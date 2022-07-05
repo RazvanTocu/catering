@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='ERETUM CATERING - Chefs')"></head>
+	<body>
+	
+		<div th:replace="fragments/base.html :: navbar"></div>	
+		</div>
+		
+		<div class="container card my-4 pb-3 shadow-lg">
+		  	<div class="row d-flex justify-content-center m-3">
+		  	</div>
+			<div class=" d-flex row justify-content-start m-1">
+				<div class="row d-flex justify-content-center text-center mb-3">
+					<h2> I NOSTRI CHEFS </h2>
+				</div>				
+				<div th:each="chef : ${chefs}" class="col-md-6 col-lg-4 d-flex justify-content-center my-3">
+					<div class="card">
+						<img src="/img/chef.jpg" class="card-img-top container d-flex justify-content-center" style="width:70%" alt="...">
+			  			<div class="card-body">
+			   				 <h5 class="card-title mx-3" th:text="${chef.name}">Buffet 1</h5>
+			   				 <h5 class="card-title mx-3" th:text="${chef.surname}">Buffet 1</h5>
+			    			 <p class="card-text mx-3" th:text="${chef.nationality}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			    			 <div class="container">
+			    			 	<div class="row d-flex justify-content-center px-3 my-2">
+			    					<a sec:authorize="isAuthenticated()" th:href = "@{'/chef/' + ${chef.id}}" href="/" class="btn btn-primary shadow-sm">
+			    						Visualizza Dettagli
+			    					</a>			    					
+			    			 	</div>		    			 	
+			    			 	<div class="row d-flex justify-content-center px-3 my-2">
+			    					<a sec:authorize="hasAuthority('ADMIN')" th:href = "@{'/chef/edit/' + ${chef.id}}" href="/"  class="btn btn-outline-success shadow-sm">
+			    						Modifica
+			    					</a>			    					
+			    			 	</div>	
+			    			 	<div class="row d-flex justify-content-center px-3 my-2">
+			    					<a sec:authorize="hasAuthority('ADMIN')" th:href = "@{'/chef/delete/' + ${chef.id}}" href="/" class="btn btn-outline-danger shadow-sm">
+			    						Elimina
+			    					</a>				    								    					
+			    			 	</div>				    			 
+			    			 </div>
+			  			</div>
+					</div> 			
+				</div>				
+			</div>
+			
+			<div class="d-flex col m-2 my-5 justify-content-center">
+					<a sec:authorize="hasAuthority('ADMIN')" th:href ="@{/chef/add/form}" href="/" type="button" class="btnChefAdd btn btn-success" >Inserisci nuovo chef</a>
+				</div>
+		</div>
+		<div th:replace="fragments/base.html :: footer"></div>
+
+	</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='ERETUM CATERING - profilo')"></head>
+	<body>
+
+		<div th:replace="fragments/base.html :: navbar"></div>
+
+		<div class="container">
+			<div class=" d-flex row justify-content-center m-1">
+				<div class="col-md-4 d-flex justify-content-center my-1">
+					<div class="card shadow">
+						<img src="/img/chef.jpg" class="card-img-top container d-flex justify-content-center">
+			  			<div class="card-body">
+			   				 <h5 class="card-title" th:text="|${chef.name} ${chef.surname}|">Nome Chef</h5>	
+			   				 <div class="card-title" th:text="${chef.nationality}">Nazionalità Chef</div>		
+						</div>				
+					</div>
+				</div>	
+			</div>	
+		</div>
+				
+		
+		<div class="container my-4 card shadow">
+			<div class="row my-4 d-flex justify-content-start">
+				<h4 class="justify-content-center d-flex ">I BUFFET PROPOSTI DAL NOSTRO CHEF</h4>
+			</div>
+			<div class=" d-flex row justify-content-start">
+				<div th:each="buffet : ${chef.buffets}" class="col-md-6 col-lg-4 d-flex justify-content-center">
+					<div class="card  my-2 shadow">
+						<img src="https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/11/zpa6rG2Y-Buffet-in-Dubai-1.jpg" class="card-img-top" alt="...">
+			  			<div class="card-body">
+			   				 <h5 class="card-title" th:text="${buffet.name}">Buffet 1</h5>
+			    			 <p style="height:80px; overflow:hidden" class="card-text" th:text="${buffet.description}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			    			 <div class="container">
+			    			 	<div class="row d-flex justify-content-center px-3 my-1">
+			    					<a sec:authorize="isAuthenticated()" href="BuffetList.html" th:href = "@{'/buffet/' + ${buffet.id}}" class="my-2 shadow-sm btn btn-primary">
+			    						Visualizza Dettagli
+			    					</a>			    					
+			    			 	</div>		    			 	
+			    			 	<div class="row d-flex justify-content-center px-3 my-1">
+			    					<a sec:authorize="hasAuthority('ADMIN')" href="BuffetList.html" th:href = "@{'/buffet/edit/' + ${buffet.id}}" class="mb-2 shadow-s btn btn-outline-success">
+			    						Modifica
+			    					</a>			    					
+			    			 	</div>	
+			    			 	<div class="row d-flex justify-content-center px-3 my-1">
+			    					<a sec:authorize="hasAuthority('ADMIN')" href="BuffetList.html" th:href = "@{'/buffet/delete/' + ${buffet.id}}" class="mb-2 shadow-sm btn btn-outline-danger">
+			    						Elimina
+			    					</a>			    					
+			    			 	</div>				    			 
+			    			 </div>
+
+			  			</div>
+					</div> 			
+				</div>				
+			</div>	
+			<div sec:authorize="hasAuthority('ADMIN')" class=" d-flex row-3 pb-3 mt-5 mb-3 justify-content-center"> 
+				<a  th:href = "@{'/buffet/add/'+ ${chef.id}}" href="BuffetList.html"  class="btn btn-outline-primary">
+					Aggiungi un nuovo Buffet
+				</a>	
+			</div>	
+		</div>
+
+		<div th:replace="fragments/base.html :: footer"></div>
+
+	</body>
+</html>

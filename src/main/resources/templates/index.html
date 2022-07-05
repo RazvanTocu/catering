@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head th:replace="fragments/base.html :: headerfiles(title='ERETUM CATERING - Homepage')"></head>
+
+	<body>
+
+		<div th:replace="fragments/base.html :: navbar"></div>
+		
+		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+		  <div class="carousel-indicators">
+		    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+		    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+		  </div>
+		  <div class="carousel-inner">
+		    <div class="carousel-item active">
+		      <img src="/img/logoEretum.png" class="d-block w-100" alt="...">
+		    </div>
+		    <div class="carousel-item">
+		      <img src="https://cdn0.matrimonio.com/vendor/2594/3_2/960/jpg/70314230-912177972481360-2171982424924225536-o_2_192594-158143063923335.jpeg" class="d-block w-100" alt="...">
+		    </div>
+		  </div>
+		  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    <span class="visually-hidden">Previous</span>
+		  </button>
+		  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    <span class="visually-hidden">Next</span>
+		  </button>
+		</div>
+		 
+		<div class="container my-4 card px-5 border border-success border-1 shadow-lg">
+			<div class=" d-flex row justify-content-center mt-5 mb-3">
+				<h2 class="d-flex justify-content-center">CHI SIAMO </h2><br><br>
+				<div class="row my-4">
+					<div class="col col-md-6 mr-4" style="text-align: justify; font-weight:400">
+						<p>
+						<b><font color="#804040">ERETUM CATERING</font></b> è una società di catering nata a Roma nel 2022 dall’incontro di persone con esperienza decennale 
+						nel ramo della ristorazione, del banqueting e del catering.
+						<b><font color="#804040">ERETUM CATERING</font></b> segue un metodo di cucina tradizionale e raffinata per soddisfare i desideri di tutti i clienti.
+						Il nostro Catering si distingue per l’attenzione data alle esigenze del cliente, 
+						per la versatilità nelle soluzioni, per la professionalità e per l’elevato rapporto qualità/prezzo.<br>
+						Lavoriamo con aziende (piccole, medio, grandi) in tutta Roma mantenendo standard di qualità elevati.<br>
+						Lo Staff di <b><font color="#804040">ERETUM CATERING</font></b> è uno staff altamente qualificato, 
+						in grado di suggerire con molta discrezione le soluzioni migliori, studiandone ogni particolare con professionalità, 
+						puntualità ed eleganza, personalizzando ogni aspetto per un ricevimento unico ed esclusivo.<br>
+						<br><b><i>Realizziamo i vostri sogni!</i></b>
+						</p>
+					</div>
+					<div class="col col-md-6  d-flex justify-content-center">
+						<img class="img-about" align="center" src="https://www.pepecatering.it/images/catering-aziendali-roma/catering-aziendali-roma--.jpg">
+					</div>
+				</div>
+				
+				
+			</div>
+			<div class=" d-flex row justify-content-start m-1">
+							
+			</div>	
+			
+		</div>
+		
+		<div class="container my-4 border card px-5 border-success border-1 shadow-lg gftext">
+			<div class=" d-flex row justify-content-center mt-5 mb-3">
+				<h2 class="d-flex justify-content-center">I NOSTRI CHEF </h2>
+			</div>
+			<div class=" d-flex row justify-content-start m-1">
+				<div th:each="chef : ${chefs}" class="col-md-6 col-lg-4 d-flex justify-content-center my-1 my-md-2 my-sm-3">
+					<div class="card flex-grow-1 shadow">
+						<img src="/img/chef.jpg" class="card-img-top container d-flex justify-content-center" style="width:70%" alt="...">
+			  			<div class="card-body">
+			   				 <h5 class="card-title" th:text="${chef.name}">Chef 1</h5>
+			   				 <h5 class="card-title" th:text="${chef.surname}">Chef 1</h5>
+			    			 <p class="card-text" th:text="${chef.nationality}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			    			 <div class="container">
+			    			 	<div class="row d-flex justify-content-center px-3 mt-4 mb-2">
+			    					<a sec:authorize="isAuthenticated()" th:href = "@{'/chef/' + ${chef.id}}" href="/" class="shadow btn btn-primary">
+			    						Dettagli Chef
+			    					</a>			    					
+			    			 	</div>		    			 					    			 
+			    			 </div>
+			  			</div>
+					</div> 			
+				</div>				
+			</div>	
+			<div class=" d-flex row justify-content-end m-3">
+				<div class ="col col-lg-3 d-flex justify-content-end p-0 mt-4 mb-2">
+					<a th:href = "@{/chef/all}" href="/" class="btn btn-outline-warning shadow btn-lg">
+				    	Visualizza lista completa
+				    </a>				
+				</div>
+			</div>	
+		</div>
+		
+		
+		<div class="container my-4  card px-5 border border-success border-1 shadow-lg">
+			<div class=" d-flex row justify-content-center mt-5 mb-3">
+				<h2 class="d-flex justify-content-center">I BUFFET CHE PROPONIAMO</h2>
+			</div>
+			<div class=" d-flex row justify-content-start m-1">
+				<div th:each="buffet : ${buffets}" class="col-md-6 col-lg-4 d-flex justify-content-center my-1 my-md-2 my-sm-3">
+					<div class="card flex-grow-1">
+						<img src="https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/11/zpa6rG2Y-Buffet-in-Dubai-1.jpg" class="card-img-top" alt="...">
+			  			<div class="card-body">
+			   				 <h5 class="card-title" th:text="${buffet.name}">Buffet 1</h5>
+			    			 <p style="height:80px; overflow:hidden" class="card-text" th:text="${buffet.description}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			    			 <div class="container">
+			    			 	<div class="row d-flex justify-content-center px-3 mt-4 mb-2">
+			    					<a sec:authorize="isAuthenticated()" th:href = "@{'/buffet/' + ${buffet.id}}" href="/" class="btn btn-primary">
+			    						Dettagli Buffet
+			    					</a>			    					
+			    			 	</div>		    			 					    			 
+			    			 </div>
+			  			</div>
+					</div> 			
+				</div>				
+			</div>	
+			<div class=" d-flex row justify-content-end m-3">
+				<div class ="col col-lg-3 d-flex justify-content-end p-0 mt-4 mb-2">
+					<a th:href = "@{/buffet/all}" href="/" class="btn btn-outline-warning btn-lg">
+				    	Visualizza lista completa
+				    </a>				
+				</div>
+			</div>	
+		</div>
+		
+		
+		<div th:replace="fragments/base.html :: footer"></div>
+
+	</body>
+</html>

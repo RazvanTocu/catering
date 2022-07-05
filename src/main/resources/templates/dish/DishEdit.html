@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head th:replace="fragments/base.html :: headerfiles(title='ERETUM CATERING - Modifica piatto')"></head>
+
+	<body>
+
+		<div th:replace="fragments/base.html :: navbar"></div>	
+				
+		<div class="d-flex container justify-content-center">
+			<div class="col-lg-6 card" >
+				<h3 class="card-title m-3 d-flex justify-content-center">MODIFICA IL PIATTO SELEZIONATO</h3>				
+				<form th:action="@{'/dish/edit/'+ ${dish.id} + '/' + ${idBuffet}}" method="post" class="m-3">
+				  <div class="mb-4 px-3">
+				    <label class="form-label">Nome del Piatto</label>
+				    <input th:field="${dish.name}" type="text" required class="form-control shadow">
+				  </div>
+				  <div class="mb-4 px-3">
+				    <label class="form-label">Descrizione</label>
+				    <input th:field="${dish.description}" type="text" required class="form-control shadow">
+				  </div>
+				  <a  th:href="@{'/buffet/' + ${idBuffet}}" href="/" class="shadow btn btn-danger">Annulla</a>
+				  <button type="submit" class="shadow btn btn-success">Apporta modifiche</button>
+				</form>				
+			</div>
+		</div>		
+			
+	</body>
+</html>

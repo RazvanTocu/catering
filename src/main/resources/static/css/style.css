@@ -1,0 +1,34 @@
+body{
+	background-color: rgb(128, 64, 64);
+}
+
+.menu-nav{
+	background-color: white;
+	text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.img-logoNav{
+	width: 250px;
+}
+.section-footer{
+	background-color: white;	
+}
+
+.gfbadge{
+	background-color: white;
+}
+
+.text{
+	color: black;
+}
+
+.chefbg{
+ background-image: url("/img/chef.jpg");
+ background-repeat: no-repeat;
+}
+
+.img-about{
+	width: 100%;
+}

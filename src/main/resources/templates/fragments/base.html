@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head th:fragment="headerfiles(title)">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+	  	<!-- CSS only -->
+	  	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	  
+	  	<!-- JavaScript Bundle with Popper -->
+	  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	  	
+		<link rel="stylesheet" href="/css/style.css">		
+		<title th:text="${title}"></title>	
+	</head>
+	
+	<body>
+		<div class="menu-nav container rounded mt-3" th:fragment="navbar" >
+		  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-6 my-4"> <!--impostazioni navbar-->
+			    <div class="col-3 d-flex justify-content-center align-items-center ms-3 ">
+			    	<a href="/"><img src="/img/ImmagineLogo.png" class="img-logoNav"></a>
+			    </div>
+			    
+			    <ul class="nav col-5 col-md-auto mb-2 justify-content-left mb-md-0">
+			      <li><a href="/" class="nav-link px-5 ">HOME</a></li>
+			      <li><a href="/" th:href = @{/buffet/all} class="nav-link px-5" style="color:rgb(229, 190, 1)">BUFFET ERETUM</a></li>
+			      <li><a href="/" th:href = @{/chef/all} class="nav-link px-5" style="color:rgb(229, 190, 1)">I NOSTRI CHEF</a></li>
+			    </ul>
+			
+			    <div class="col-md-3 text-end">
+			      <a sec:authorize="!isAuthenticated()" type="button" class="btn btn-outline-success me-2" href="/" th:href = @{/login}>Accedi</a>
+			      <a sec:authorize="!isAuthenticated()" type="button" class="btn" style="background: #804040; color:white" href="/" th:href = @{/register}>Registrati</a>
+			      <a sec:authorize="isAuthenticated()" type="button" class="btn" style="background: rgb(255, 0, 0); color:white" href="/" th:href = @{/logout}>Logout</a>		  
+			    
+			    </div>
+		  </header>
+		</div>
+		
+		<!--Footer-->
+		<div class="section-footer container rounded" th:fragment="footer">
+		  <footer class="py-3 my-5">
+		    <ul class="nav justify-content-center pb-3 mb-3 border-bottom border-warning border-2">
+		      <li class="nav-item"><a href="/" class="nav-link px-4">Home</a></li>
+		      <li class="nav-item"><a href="/" th:href = @{/buffet/all}  class="nav-link px-4 text-muted">Buffet</a></li>
+		      <li class="nav-item"><a href="/" th:href = @{/chef/all} class="nav-link px-4 text-muted">Chef</a></li>
+		    </ul>
+		    <p class="text-center text-muted">&copy; Creato da Tocu Gheorghita Razvan (@Giorgio_Tocu)  --  2022</p>
+		  </footer>
+	</body>
+</html>

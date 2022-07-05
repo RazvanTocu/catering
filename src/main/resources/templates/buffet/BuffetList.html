@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head th:replace="fragments/base.html :: headerfiles(title='ERETUM CATERING - I nostri Buffet')"></head>
+	
+	<body>
+
+		<div th:replace="fragments/base.html :: navbar"></div>
+		
+		<div class="container d-flex justify-content-center align-items-center px-0" style="position: relative;">
+			<img src="https://www.eclogaitalia.it/wp-content/uploads/2016/01/servizio-catering.jpg" class="img-fluid rounded-2 flex-fill" alt="...">
+				<div style="padding:20px; position: absolute; vertical-align:middle; text-align:center">
+				</div>
+
+		</div>		
+		
+		<div class="container card mt-4 pb-3 shadow-lg">
+		
+			<div class=" d-flex row justify-content-start m-1 pb-4">
+				<div class="row d-flex justify-content-center text-center my-5">
+					<h3 class="text"> ELENCO DEI NOSTRI BUFFET </h3>
+				</div>
+				<div th:each="buffet : ${buffets}" class="col-md-6 col-lg-4 d-flex justify-content-center my-1">
+					<div class="card flex-grow-1 shadow">
+						<img src="https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/11/zpa6rG2Y-Buffet-in-Dubai-1.jpg" class="card-img-top" alt="...">
+			  			<div class="card-body">
+			   				 <h5 class="card-title" th:text="${buffet.name}">Buffet 1</h5>
+			    			 <p style="height:80px; overflow:hidden" class="card-text" th:text="${buffet.description}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			    			 <div class="container ">
+			    			 	<div class="row d-flex justify-content-center px-3 mt-4">
+					    			<a sec:authorize="isAuthenticated()" href="BuffetList.html" th:href = "@{'/buffet/' + ${buffet.id}}" class="btn btn-primary shadow">
+					    				Maggiori Dettagli
+					    			</a>			    					
+			    			 	</div>								    							
+				    			</div>	    			 			    				
+				    			<div class="d-flex justify-content-center align-items-center">	
+				    				<h4 class="text">CHEF:</h4>		
+									<a sec:authorize="isAuthenticated()" href="BuffetList.html" th:href = "@{'/chef/' + ${buffet.chef.id}}" 
+					    				class="btn btn-success m-4" th:text="|${buffet.chef.name} ${buffet.chef.surname}|"></a>				    									    							
+				    			</div>			
+			    			 </div>				    			 
+			    		</div>			    			
+			  		</div>
+				</div> 			
+			</div>				
+		</div>
+	</div>
+	<div th:replace="fragments/base.html :: footer"></div>
+	</body>
+</html>

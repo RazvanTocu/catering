@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='Login')"></head>
+	<body>
+		<div th:replace="fragments/base.html :: navbar"></div>
+		
+		<div class="my-5 container">
+			<div class="row d-flex justify-content-center my-5">
+			</div>		
+			<div class="row d-flex justify-content-center  my-2">
+				<div class="col-6 card border" style="border-radius:0px;" >
+				<h3 class="card-title m-3 d-flex justify-content-center">ACCEDI</h3>
+					<h5 class="d-flex justify-content-center"> Accedi adesso per visualizzare tutte le nostre proposte </h5>
+					<form th:action="@{/login}" method="post" class="m-3">
+					  <div class="mb-3">
+					    <label class="form-label">Username</label>
+					    <input name="username" type="text" required class="form-control shadow">
+					  </div>
+					  <div class="mb-3">
+					    <label class="form-label">Password</label>
+					    <input name="password" type="password" required class="form-control shadow">
+					  </div>
+					  <button type="submit" class="btn btn-success shadow mt-4">Accedi</button>
+					  <a type="submit" th:href="@{/register}" class="btn mt-4" style="background: #804040; color:white">Registrati</a>
+					</form>		
+				</div>	
+				
+				<div class="col-5  mx-3 d-flex justify-content-center align-items-center" style="border-radius: 0px;">
+					<img class="img-about" src="https://cdn.dribbble.com/users/572419/screenshots/4646056/drr.gif">
+				</div>
+			</div>
+		</div>
+		
+
+	</body>
+</html>

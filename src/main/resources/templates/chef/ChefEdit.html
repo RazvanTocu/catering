@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='ERETUM CATERING - Modifica Chef')"></head>
+
+
+	<body>
+
+
+		<div th:replace="fragments/base.html :: navbar"></div>
+		
+		<div class="d-flex container justify-content-center">
+			<div class="col-lg-6 card border border-primary" >
+				<h3 class="card-title m-3 d-flex justify-content-center">APPORTA MODIFICHE ALLO CHEF</h3>					
+				<form th:action="@{'/chef/edit/'+ ${chef.id}}" method="post"  th:object="${chef}" class="m-3">
+				 <div th:if="${#fields.hasGlobalErrors()}">
+				 	<p class="badge text-bg-danger my-2" th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+				 </div>					  
+				  <div class="mb-4 px-3">
+				    <label class="form-label">Nome</label>
+				    <input th:field="*{name}" type="text" required class="form-control shadow">
+				  </div>
+				  <div class="mb-4 px-3">
+				    <label class="form-label">Cognome</label>
+				    <input th:field="*{surname}" type="text" required class="form-control shadow">
+				  </div>
+				  <div class="mb-4 px-3">
+				    <label class="form-label">Nazionalità</label>
+				    <input th:field="*{nationality}" type="text" required class="form-control shadow">
+				  </div>
+				  <a  th:href="@{/chef/all}" href="/" class="btn btn-danger">Annulla</a>	
+				  <button type="submit" class="btn btn-primary">Conferma Modifiche</button>
+			  
+				</form>				
+			</div>
+		</div>		
+		
+		
+	</body>
+</html>
