@@ -8,4 +8,5 @@ La società offre diversi buffet:
 * Per ogni piatto proposto in un buffet sono di interesse il nome, una descrizione, l'elenco degli ingredienti.
 * Per ogni ingrediente è di interesse il nome, l'origine, una descrizione. 
 
-*AGGIORNAMENTO* Ho ricaricato l'intera cartella catering su gitHub in quanto mi sono accorto di alcuni problemi sui file 
+## *AGGIORNAMENTO*: 
+Ho ricaricato l'intera cartella catering su gitHub in quanto mi sono accorto di alcuni problemi sui file 
